@@ -1,5 +1,20 @@
-@import url(https://db.onlinewebfonts.com/c/127532bae53efa808330288dd41e2316?family=Copyright+Klim+Type+Foundry);
-@import url(https://db.onlinewebfonts.com/c/0a086e32e41c5e5960b26626757f07f3?family=Apercu);
+@font-face {font-family: "Copyright Klim Type Foundry";
+    src: url("//db.onlinewebfonts.com/t/05eb50967a458515901d0a2aa0a8eaf8.eot"); /* IE9*/
+    src: url("//db.onlinewebfonts.com/t/05eb50967a458515901d0a2aa0a8eaf8.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("//db.onlinewebfonts.com/t/05eb50967a458515901d0a2aa0a8eaf8.woff2") format("woff2"), /* chrome firefox */
+    url("//db.onlinewebfonts.com/t/05eb50967a458515901d0a2aa0a8eaf8.woff") format("woff"), /* chrome firefox */
+    url("//db.onlinewebfonts.com/t/05eb50967a458515901d0a2aa0a8eaf8.ttf") format("truetype"), /* chrome firefox opera Safari, Android, iOS 4.2+*/
+    url("//db.onlinewebfonts.com/t/05eb50967a458515901d0a2aa0a8eaf8.svg#Copyright Klim Type Foundry") format("svg"); /* iOS 4.1- */
+}
+
+@font-face {font-family: "Apercu";
+    src: url("//db.onlinewebfonts.com/t/0a086e32e41c5e5960b26626757f07f3.eot"); /* IE9*/
+    src: url("//db.onlinewebfonts.com/t/0a086e32e41c5e5960b26626757f07f3.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("//db.onlinewebfonts.com/t/0a086e32e41c5e5960b26626757f07f3.woff2") format("woff2"), /* chrome firefox */
+    url("//db.onlinewebfonts.com/t/0a086e32e41c5e5960b26626757f07f3.woff") format("woff"), /* chrome firefox */
+    url("//db.onlinewebfonts.com/t/0a086e32e41c5e5960b26626757f07f3.ttf") format("truetype"), /* chrome firefox opera Safari, Android, iOS 4.2+*/
+    url("//db.onlinewebfonts.com/t/0a086e32e41c5e5960b26626757f07f3.svg#Apercu") format("svg"); /* iOS 4.1- */
+}
 
 :root {
 	--dominantAverage: #716151;
