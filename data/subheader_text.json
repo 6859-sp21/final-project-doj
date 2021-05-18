@@ -12,13 +12,18 @@
     },
     {
         "title": "Same data, new perspective 👀",
-        "text": ["I can also plot the data by Red and Blue values to obtain a different view. Both perspectives reveal a similar trend, although this graph looks more dispersed. This means there is more variability of dominant colors on the blue-red spectrum."],
+        "text": ["I can also plot the data by Red and Blue values to obtain a different view. Both perspectives reveal a similar trend, although this graph looks more dispersed. This means there is more variability of dominant colors on the blue-red spectrum.", "🗿 The 172 portraits dominant in the grayscale stay put from the previous view!"],
         "small": "🐁 Mouseover each point to explore the data."
     },
     {
         "title": "Moving up from pixel values 🧠",
-        "text": ["By repeatedly finding patterns in the data in a deep neural net, I can identify clusters that are similar in ways beyond pixel color. Since I am a machine, I don't know how these things are alike in the real world...", "Can you think of names for each group?"],
-        "small": "🕹 Use the scrollwheel to zoom, pan, and interact with the visual."
+        "text": ["I can repeatedly find patterns in an image's data using a deep neural net, and identify clusters of images that are similar in ways beyond a single color measure. As much as this might look like a Rorschach test, the absolute position of each cluster is arbitrary.", "🤓 Let me arrange it in a grid so it's easier to see..."],
+        "small": "🐁 Mouseover each point to explore the data."
+    },
+    {
+        "title": "Clustering by likeness 💪",
+        "text": ["...Voilà! In this grid are the 10 clusters that I found in the data. Above you will find one representative for each cluster. To me, members of each cluster resemble their leader. Do you think so too?", "💭 Since I am a machine, I don't know how these groups are alike in the real world. Can you think of names for them?"],
+        "small": "🕹 Hover over and click on each cluster representative to explore the visual."
     },
     {
         "title": "From reality to latent space 🚀",

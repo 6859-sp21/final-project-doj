@@ -1,3 +1,5 @@
+
+(function(l, r) { if (l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (window.location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(window.document);
 var app = (function () {
     'use strict';
 
@@ -62,6 +64,20 @@ var app = (function () {
     function listen(node, event, handler, options) {
         node.addEventListener(event, handler, options);
         return () => node.removeEventListener(event, handler, options);
+    }
+    function stop_propagation(fn) {
+        return function (event) {
+            event.stopPropagation();
+            // @ts-ignore
+            return fn.call(this, event);
+        };
+    }
+    function self$1(fn) {
+        return function (event) {
+            // @ts-ignore
+            if (event.target === this)
+                fn.call(this, event);
+        };
     }
     function attr(node, attribute, value) {
         if (value == null)
@@ -21000,51 +21016,234 @@ var app = (function () {
 
     function get_each_context$1(ctx, list, i) {
     	const child_ctx = ctx.slice();
-    	child_ctx[31] = list[i].image_path;
-    	child_ctx[32] = list[i].id;
-    	child_ctx[34] = i;
+    	child_ctx[42] = list[i].cluster_rep;
+    	child_ctx[43] = list[i].label;
+    	child_ctx[45] = i;
     	return child_ctx;
     }
 
-    // (260:12) {#each dataWithImages as {image_path, id}
-    function create_each_block$1(ctx) {
-    	let pattern;
-    	let image;
+    function get_each_context_1$1(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[46] = list[i].image_path;
+    	child_ctx[47] = list[i].count;
+    	child_ctx[45] = i;
+    	return child_ctx;
+    }
+
+    // (412:12) {#each metFacesData as {image_path, count}
+    function create_each_block_1$1(ctx) {
+    	let pattern0;
+    	let image0;
+    	let image0_href_value;
+    	let image0_id_value;
+    	let pattern0_id_value;
+    	let pattern1;
+    	let image1;
+    	let image1_href_value;
+    	let image1_id_value;
+    	let pattern1_id_value;
+    	let pattern2;
+    	let image2;
+    	let image2_href_value;
+    	let image2_id_value;
+    	let pattern2_id_value;
 
     	const block = {
     		c: function create() {
-    			pattern = svg_element("pattern");
-    			image = svg_element("image");
-    			attr_dev(image, "href", `images/compressed_${/*image_path*/ ctx[31]}`);
-    			attr_dev(image, "id", `${/*id*/ ctx[32]}-photo`);
-    			attr_dev(image, "class", "face-image");
-    			attr_dev(image, "x", 0);
-    			attr_dev(image, "y", 0);
-    			attr_dev(image, "width", /*imageSize*/ ctx[4]);
-    			attr_dev(image, "height", /*imageSize*/ ctx[4]);
-    			add_location(image, file$5, 261, 20, 8879);
-    			attr_dev(pattern, "patternUnits", "objectBoundingBox");
-    			attr_dev(pattern, "height", 1);
-    			attr_dev(pattern, "width", 1);
-    			attr_dev(pattern, "key", /*i*/ ctx[34]);
-    			attr_dev(pattern, "id", /*id*/ ctx[32]);
-    			add_location(pattern, file$5, 260, 16, 8780);
+    			pattern0 = svg_element("pattern");
+    			image0 = svg_element("image");
+    			pattern1 = svg_element("pattern");
+    			image1 = svg_element("image");
+    			pattern2 = svg_element("pattern");
+    			image2 = svg_element("image");
+    			attr_dev(image0, "href", image0_href_value = `images/compressed_${/*image_path*/ ctx[46]}`);
+    			attr_dev(image0, "id", image0_id_value = `${/*count*/ ctx[47]}-photo`);
+    			attr_dev(image0, "class", "face-image");
+    			attr_dev(image0, "x", 0);
+    			attr_dev(image0, "y", 0);
+    			add_location(image0, file$5, 416, 20, 14911);
+    			attr_dev(pattern0, "patternUnits", "objectBoundingBox");
+    			attr_dev(pattern0, "height", 1);
+    			attr_dev(pattern0, "width", 1);
+    			attr_dev(pattern0, "key", /*i*/ ctx[45]);
+    			attr_dev(pattern0, "id", pattern0_id_value = /*count*/ ctx[47]);
+    			add_location(pattern0, file$5, 415, 16, 14806);
+    			attr_dev(image1, "href", image1_href_value = `images/mini_${/*image_path*/ ctx[46]}`);
+    			attr_dev(image1, "id", image1_id_value = `${/*count*/ ctx[47]}-photo-mini`);
+    			attr_dev(image1, "class", "face-image-mini");
+    			attr_dev(image1, "x", 0);
+    			attr_dev(image1, "y", 0);
+    			attr_dev(image1, "height", "20");
+    			attr_dev(image1, "width", "20");
+    			add_location(image1, file$5, 419, 24, 15179);
+    			attr_dev(pattern1, "patternUnits", "objectBoundingBox");
+    			attr_dev(pattern1, "height", 1);
+    			attr_dev(pattern1, "width", 1);
+    			attr_dev(pattern1, "key", /*i*/ ctx[45]);
+    			attr_dev(pattern1, "id", pattern1_id_value = `${/*count*/ ctx[47]}-mini`);
+    			add_location(pattern1, file$5, 418, 16, 15060);
+    			attr_dev(image2, "href", image2_href_value = `images/mini_${/*image_path*/ ctx[46]}`);
+    			attr_dev(image2, "id", image2_id_value = `${/*count*/ ctx[47]}-photo-mini-40`);
+    			attr_dev(image2, "class", "face-image-mini-40");
+    			attr_dev(image2, "x", 0);
+    			attr_dev(image2, "y", 0);
+    			attr_dev(image2, "height", "40");
+    			attr_dev(image2, "width", "40");
+    			add_location(image2, file$5, 422, 20, 15468);
+    			attr_dev(pattern2, "patternUnits", "objectBoundingBox");
+    			attr_dev(pattern2, "height", 1);
+    			attr_dev(pattern2, "width", 1);
+    			attr_dev(pattern2, "key", /*i*/ ctx[45]);
+    			attr_dev(pattern2, "id", pattern2_id_value = `${/*count*/ ctx[47]}-mini-40`);
+    			add_location(pattern2, file$5, 421, 16, 15350);
     		},
     		m: function mount(target, anchor) {
-    			insert_dev(target, pattern, anchor);
-    			append_dev(pattern, image);
+    			insert_dev(target, pattern0, anchor);
+    			append_dev(pattern0, image0);
+    			insert_dev(target, pattern1, anchor);
+    			append_dev(pattern1, image1);
+    			insert_dev(target, pattern2, anchor);
+    			append_dev(pattern2, image2);
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty[0] & /*imageSize*/ 16) {
-    				attr_dev(image, "width", /*imageSize*/ ctx[4]);
+    			if (dirty[0] & /*metFacesData*/ 1 && image0_href_value !== (image0_href_value = `images/compressed_${/*image_path*/ ctx[46]}`)) {
+    				attr_dev(image0, "href", image0_href_value);
     			}
 
-    			if (dirty[0] & /*imageSize*/ 16) {
-    				attr_dev(image, "height", /*imageSize*/ ctx[4]);
+    			if (dirty[0] & /*metFacesData*/ 1 && image0_id_value !== (image0_id_value = `${/*count*/ ctx[47]}-photo`)) {
+    				attr_dev(image0, "id", image0_id_value);
+    			}
+
+    			if (dirty[0] & /*metFacesData*/ 1 && pattern0_id_value !== (pattern0_id_value = /*count*/ ctx[47])) {
+    				attr_dev(pattern0, "id", pattern0_id_value);
+    			}
+
+    			if (dirty[0] & /*metFacesData*/ 1 && image1_href_value !== (image1_href_value = `images/mini_${/*image_path*/ ctx[46]}`)) {
+    				attr_dev(image1, "href", image1_href_value);
+    			}
+
+    			if (dirty[0] & /*metFacesData*/ 1 && image1_id_value !== (image1_id_value = `${/*count*/ ctx[47]}-photo-mini`)) {
+    				attr_dev(image1, "id", image1_id_value);
+    			}
+
+    			if (dirty[0] & /*metFacesData*/ 1 && pattern1_id_value !== (pattern1_id_value = `${/*count*/ ctx[47]}-mini`)) {
+    				attr_dev(pattern1, "id", pattern1_id_value);
+    			}
+
+    			if (dirty[0] & /*metFacesData*/ 1 && image2_href_value !== (image2_href_value = `images/mini_${/*image_path*/ ctx[46]}`)) {
+    				attr_dev(image2, "href", image2_href_value);
+    			}
+
+    			if (dirty[0] & /*metFacesData*/ 1 && image2_id_value !== (image2_id_value = `${/*count*/ ctx[47]}-photo-mini-40`)) {
+    				attr_dev(image2, "id", image2_id_value);
+    			}
+
+    			if (dirty[0] & /*metFacesData*/ 1 && pattern2_id_value !== (pattern2_id_value = `${/*count*/ ctx[47]}-mini-40`)) {
+    				attr_dev(pattern2, "id", pattern2_id_value);
     			}
     		},
     		d: function destroy(detaching) {
-    			if (detaching) detach_dev(pattern);
+    			if (detaching) detach_dev(pattern0);
+    			if (detaching) detach_dev(pattern1);
+    			if (detaching) detach_dev(pattern2);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block_1$1.name,
+    		type: "each",
+    		source: "(412:12) {#each metFacesData as {image_path, count}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (439:4) {#each clusterData as {cluster_rep, label}
+    function create_each_block$1(ctx) {
+    	let div;
+    	let img;
+    	let img_src_value;
+    	let img_alt_value;
+    	let img_width_value;
+    	let img_height_value;
+    	let img_style_value;
+    	let t;
+    	let mounted;
+    	let dispose;
+
+    	function mouseenter_handler(...args) {
+    		return /*mouseenter_handler*/ ctx[34](/*i*/ ctx[45], ...args);
+    	}
+
+    	function mouseout_handler(...args) {
+    		return /*mouseout_handler*/ ctx[35](/*i*/ ctx[45], ...args);
+    	}
+
+    	function click_handler(...args) {
+    		return /*click_handler*/ ctx[36](/*i*/ ctx[45], ...args);
+    	}
+
+    	const block = {
+    		c: function create() {
+    			div = element("div");
+    			img = element("img");
+    			t = space();
+    			if (img.src !== (img_src_value = `images/compressed_images/${/*cluster_rep*/ ctx[42]}`)) attr_dev(img, "src", img_src_value);
+    			attr_dev(img, "id", `cluster-${/*i*/ ctx[45]}-rep`);
+    			attr_dev(img, "class", "cluster-rep");
+    			attr_dev(img, "alt", img_alt_value = `${/*label*/ ctx[43]} Representative`);
+    			attr_dev(img, "width", img_width_value = 0.8 * /*imageSize*/ ctx[9]);
+    			attr_dev(img, "height", img_height_value = 0.8 * /*imageSize*/ ctx[9]);
+    			attr_dev(img, "style", img_style_value = `opacity:${/*hoverRep*/ ctx[16][/*i*/ ctx[45]] ? 1 : 0.7}; background-color:white`);
+    			add_location(img, file$5, 443, 12, 16827);
+    			attr_dev(div, "id", /*i*/ ctx[45]);
+    			attr_dev(div, "class", "pointer svelte-1jsyyag");
+    			add_location(div, file$5, 439, 8, 16561);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			append_dev(div, img);
+    			append_dev(div, t);
+
+    			if (!mounted) {
+    				dispose = [
+    					listen_dev(div, "mouseenter", mouseenter_handler, false, false, false),
+    					listen_dev(div, "mouseout", self$1(stop_propagation(mouseout_handler)), false, false, true),
+    					listen_dev(div, "click", click_handler, false, false, false)
+    				];
+
+    				mounted = true;
+    			}
+    		},
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
+
+    			if (dirty[0] & /*clusterData*/ 2 && img.src !== (img_src_value = `images/compressed_images/${/*cluster_rep*/ ctx[42]}`)) {
+    				attr_dev(img, "src", img_src_value);
+    			}
+
+    			if (dirty[0] & /*clusterData*/ 2 && img_alt_value !== (img_alt_value = `${/*label*/ ctx[43]} Representative`)) {
+    				attr_dev(img, "alt", img_alt_value);
+    			}
+
+    			if (dirty[0] & /*imageSize*/ 512 && img_width_value !== (img_width_value = 0.8 * /*imageSize*/ ctx[9])) {
+    				attr_dev(img, "width", img_width_value);
+    			}
+
+    			if (dirty[0] & /*imageSize*/ 512 && img_height_value !== (img_height_value = 0.8 * /*imageSize*/ ctx[9])) {
+    				attr_dev(img, "height", img_height_value);
+    			}
+
+    			if (dirty[0] & /*hoverRep*/ 65536 && img_style_value !== (img_style_value = `opacity:${/*hoverRep*/ ctx[16][/*i*/ ctx[45]] ? 1 : 0.7}; background-color:white`)) {
+    				attr_dev(img, "style", img_style_value);
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			mounted = false;
+    			run_all(dispose);
     		}
     	};
 
@@ -21052,7 +21251,7 @@ var app = (function () {
     		block,
     		id: create_each_block$1.name,
     		type: "each",
-    		source: "(260:12) {#each dataWithImages as {image_path, id}",
+    		source: "(439:4) {#each clusterData as {cluster_rep, label}",
     		ctx
     	});
 
@@ -21067,7 +21266,7 @@ var app = (function () {
     	let div2;
     	let div0;
     	let strong;
-    	let t1_value = (/*selectedData*/ ctx[10].title || "Unknown") + "";
+    	let t1_value = (/*selectedData*/ ctx[15].title || "Unknown") + "";
     	let t1;
     	let t2;
     	let img;
@@ -21076,10 +21275,24 @@ var app = (function () {
     	let t3;
     	let div1;
     	let t4;
-    	let t5_value = (/*selectedData*/ ctx[10].artist_display_name || "Unknown") + "";
+    	let t5_value = (/*selectedData*/ ctx[15].artist_display_name || "Unknown") + "";
     	let t5;
     	let figure_resize_listener;
-    	let each_value = /*dataWithImages*/ ctx[11];
+    	let t6;
+    	let div4;
+    	let div3;
+    	let t8;
+    	let mounted;
+    	let dispose;
+    	let each_value_1 = /*metFacesData*/ ctx[0];
+    	validate_each_argument(each_value_1);
+    	let each_blocks_1 = [];
+
+    	for (let i = 0; i < each_value_1.length; i += 1) {
+    		each_blocks_1[i] = create_each_block_1$1(get_each_context_1$1(ctx, each_value_1, i));
+    	}
+
+    	let each_value = /*clusterData*/ ctx[1];
     	validate_each_argument(each_value);
     	let each_blocks = [];
 
@@ -21093,8 +21306,8 @@ var app = (function () {
     			svg = svg_element("svg");
     			defs = svg_element("defs");
 
-    			for (let i = 0; i < each_blocks.length; i += 1) {
-    				each_blocks[i].c();
+    			for (let i = 0; i < each_blocks_1.length; i += 1) {
+    				each_blocks_1[i].c();
     			}
 
     			t0 = space();
@@ -21108,35 +21321,50 @@ var app = (function () {
     			div1 = element("div");
     			t4 = text$1("by ");
     			t5 = text$1(t5_value);
-    			add_location(defs, file$5, 258, 8, 8699);
-    			attr_dev(svg, "class", "viz-tile svelte-uw8hj5");
-    			add_location(svg, file$5, 257, 4, 8652);
-    			add_location(strong, file$5, 267, 36, 9394);
-    			attr_dev(div0, "class", "tooltip-header svelte-uw8hj5");
-    			add_location(div0, file$5, 267, 8, 9366);
-    			if (img.src !== (img_src_value = `images/compressed_${/*selectedData*/ ctx[10].image_path}`)) attr_dev(img, "src", img_src_value);
-    			attr_dev(img, "alt", img_alt_value = `${/*selectedData*/ ctx[10].id}-photo`);
-    			attr_dev(img, "width", /*imageSize*/ ctx[4]);
-    			add_location(img, file$5, 268, 8, 9459);
-    			attr_dev(div1, "class", "tooltip-text svelte-uw8hj5");
-    			add_location(div1, file$5, 269, 8, 9579);
-    			attr_dev(div2, "class", "tooltip svelte-uw8hj5");
+    			t6 = space();
+    			div4 = element("div");
+    			div3 = element("div");
+    			div3.textContent = "Cluster representatives";
+    			t8 = space();
 
-    			set_style(div2, "display", /*tooltipVisible*/ ctx[9] && /*width*/ ctx[2] > mobileBreakpoint$1 && /*scrollIndex*/ ctx[3] > 0
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			add_location(defs, file$5, 410, 8, 14447);
+    			attr_dev(svg, "class", "viz-tile svelte-1jsyyag");
+    			add_location(svg, file$5, 409, 4, 14400);
+    			add_location(strong, file$5, 428, 36, 15977);
+    			attr_dev(div0, "class", "tooltip-header svelte-1jsyyag");
+    			add_location(div0, file$5, 428, 8, 15949);
+    			if (img.src !== (img_src_value = `images/compressed_${/*selectedData*/ ctx[15].image_path}`)) attr_dev(img, "src", img_src_value);
+    			attr_dev(img, "alt", img_alt_value = `${/*selectedData*/ ctx[15].count}-photo`);
+    			attr_dev(img, "width", /*imageSize*/ ctx[9]);
+    			add_location(img, file$5, 429, 8, 16042);
+    			attr_dev(div1, "class", "tooltip-text svelte-1jsyyag");
+    			add_location(div1, file$5, 430, 8, 16165);
+    			attr_dev(div2, "class", "tooltip svelte-1jsyyag");
+
+    			set_style(div2, "display", /*tooltipVisible*/ ctx[14] && /*width*/ ctx[4] > mobileBreakpoint$1 && /*scrollIndex*/ ctx[5] > 0
     			? "block"
     			: "none");
 
-    			set_style(div2, "top", /*tooltipTop*/ ctx[6]);
-    			set_style(div2, "left", /*tooltipLeft*/ ctx[7]);
+    			set_style(div2, "top", /*tooltipTop*/ ctx[11]);
+    			set_style(div2, "left", /*tooltipLeft*/ ctx[12]);
 
-    			set_style(div2, "transform", "translate(-50%, " + (/*tooltipDirection*/ ctx[8] === "north"
+    			set_style(div2, "transform", "translate(-50%, " + (/*tooltipDirection*/ ctx[13] === "north"
     			? "-100%"
     			: "15%") + ")");
 
-    			add_location(div2, file$5, 266, 4, 9097);
-    			attr_dev(figure, "class", "figure svelte-uw8hj5");
-    			add_render_callback(() => /*figure_elementresize_handler*/ ctx[26].call(figure));
-    			add_location(figure, file$5, 256, 0, 8572);
+    			add_location(div2, file$5, 427, 4, 15680);
+    			attr_dev(figure, "class", "figure svelte-1jsyyag");
+    			add_render_callback(() => /*figure_elementresize_handler*/ ctx[33].call(figure));
+    			add_location(figure, file$5, 408, 0, 14320);
+    			attr_dev(div3, "class", "legend__title svelte-1jsyyag");
+    			add_location(div3, file$5, 437, 4, 16445);
+    			attr_dev(div4, "class", "legend svelte-1jsyyag");
+    			attr_dev(div4, "style", /*legendDisplay*/ ctx[17]);
+    			add_location(div4, file$5, 436, 0, 16293);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -21146,11 +21374,11 @@ var app = (function () {
     			append_dev(figure, svg);
     			append_dev(svg, defs);
 
-    			for (let i = 0; i < each_blocks.length; i += 1) {
-    				each_blocks[i].m(defs, null);
+    			for (let i = 0; i < each_blocks_1.length; i += 1) {
+    				each_blocks_1[i].m(defs, null);
     			}
 
-    			/*svg_binding*/ ctx[24](svg);
+    			/*svg_binding*/ ctx[31](svg);
     			append_dev(figure, t0);
     			append_dev(figure, div2);
     			append_dev(div2, div0);
@@ -21162,12 +21390,85 @@ var app = (function () {
     			append_dev(div2, div1);
     			append_dev(div1, t4);
     			append_dev(div1, t5);
-    			/*div2_binding*/ ctx[25](div2);
-    			figure_resize_listener = add_resize_listener(figure, /*figure_elementresize_handler*/ ctx[26].bind(figure));
+    			/*div2_binding*/ ctx[32](div2);
+    			figure_resize_listener = add_resize_listener(figure, /*figure_elementresize_handler*/ ctx[33].bind(figure));
+    			insert_dev(target, t6, anchor);
+    			insert_dev(target, div4, anchor);
+    			append_dev(div4, div3);
+    			append_dev(div4, t8);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].m(div4, null);
+    			}
+
+    			if (!mounted) {
+    				dispose = listen_dev(div4, "mouseleave", self$1(stop_propagation(/*mouseleave_handler*/ ctx[37])), false, false, true);
+    				mounted = true;
+    			}
     		},
     		p: function update(ctx, dirty) {
-    			if (dirty[0] & /*dataWithImages, imageSize*/ 2064) {
-    				each_value = /*dataWithImages*/ ctx[11];
+    			if (dirty[0] & /*metFacesData*/ 1) {
+    				each_value_1 = /*metFacesData*/ ctx[0];
+    				validate_each_argument(each_value_1);
+    				let i;
+
+    				for (i = 0; i < each_value_1.length; i += 1) {
+    					const child_ctx = get_each_context_1$1(ctx, each_value_1, i);
+
+    					if (each_blocks_1[i]) {
+    						each_blocks_1[i].p(child_ctx, dirty);
+    					} else {
+    						each_blocks_1[i] = create_each_block_1$1(child_ctx);
+    						each_blocks_1[i].c();
+    						each_blocks_1[i].m(defs, null);
+    					}
+    				}
+
+    				for (; i < each_blocks_1.length; i += 1) {
+    					each_blocks_1[i].d(1);
+    				}
+
+    				each_blocks_1.length = each_value_1.length;
+    			}
+
+    			if (dirty[0] & /*selectedData*/ 32768 && t1_value !== (t1_value = (/*selectedData*/ ctx[15].title || "Unknown") + "")) set_data_dev(t1, t1_value);
+
+    			if (dirty[0] & /*selectedData*/ 32768 && img.src !== (img_src_value = `images/compressed_${/*selectedData*/ ctx[15].image_path}`)) {
+    				attr_dev(img, "src", img_src_value);
+    			}
+
+    			if (dirty[0] & /*selectedData*/ 32768 && img_alt_value !== (img_alt_value = `${/*selectedData*/ ctx[15].count}-photo`)) {
+    				attr_dev(img, "alt", img_alt_value);
+    			}
+
+    			if (dirty[0] & /*imageSize*/ 512) {
+    				attr_dev(img, "width", /*imageSize*/ ctx[9]);
+    			}
+
+    			if (dirty[0] & /*selectedData*/ 32768 && t5_value !== (t5_value = (/*selectedData*/ ctx[15].artist_display_name || "Unknown") + "")) set_data_dev(t5, t5_value);
+
+    			if (dirty[0] & /*tooltipVisible, width, scrollIndex*/ 16432) {
+    				set_style(div2, "display", /*tooltipVisible*/ ctx[14] && /*width*/ ctx[4] > mobileBreakpoint$1 && /*scrollIndex*/ ctx[5] > 0
+    				? "block"
+    				: "none");
+    			}
+
+    			if (dirty[0] & /*tooltipTop*/ 2048) {
+    				set_style(div2, "top", /*tooltipTop*/ ctx[11]);
+    			}
+
+    			if (dirty[0] & /*tooltipLeft*/ 4096) {
+    				set_style(div2, "left", /*tooltipLeft*/ ctx[12]);
+    			}
+
+    			if (dirty[0] & /*tooltipDirection*/ 8192) {
+    				set_style(div2, "transform", "translate(-50%, " + (/*tooltipDirection*/ ctx[13] === "north"
+    				? "-100%"
+    				: "15%") + ")");
+    			}
+
+    			if (dirty[0] & /*hoverCluster, hoverRep, selectedCluster, updateAxis, clusterData, imageSize*/ 328386) {
+    				each_value = /*clusterData*/ ctx[1];
     				validate_each_argument(each_value);
     				let i;
 
@@ -21179,7 +21480,7 @@ var app = (function () {
     					} else {
     						each_blocks[i] = create_each_block$1(child_ctx);
     						each_blocks[i].c();
-    						each_blocks[i].m(defs, null);
+    						each_blocks[i].m(div4, null);
     					}
     				}
 
@@ -21190,50 +21491,23 @@ var app = (function () {
     				each_blocks.length = each_value.length;
     			}
 
-    			if (dirty[0] & /*selectedData*/ 1024 && t1_value !== (t1_value = (/*selectedData*/ ctx[10].title || "Unknown") + "")) set_data_dev(t1, t1_value);
-
-    			if (dirty[0] & /*selectedData*/ 1024 && img.src !== (img_src_value = `images/compressed_${/*selectedData*/ ctx[10].image_path}`)) {
-    				attr_dev(img, "src", img_src_value);
-    			}
-
-    			if (dirty[0] & /*selectedData*/ 1024 && img_alt_value !== (img_alt_value = `${/*selectedData*/ ctx[10].id}-photo`)) {
-    				attr_dev(img, "alt", img_alt_value);
-    			}
-
-    			if (dirty[0] & /*imageSize*/ 16) {
-    				attr_dev(img, "width", /*imageSize*/ ctx[4]);
-    			}
-
-    			if (dirty[0] & /*selectedData*/ 1024 && t5_value !== (t5_value = (/*selectedData*/ ctx[10].artist_display_name || "Unknown") + "")) set_data_dev(t5, t5_value);
-
-    			if (dirty[0] & /*tooltipVisible, width, scrollIndex*/ 524) {
-    				set_style(div2, "display", /*tooltipVisible*/ ctx[9] && /*width*/ ctx[2] > mobileBreakpoint$1 && /*scrollIndex*/ ctx[3] > 0
-    				? "block"
-    				: "none");
-    			}
-
-    			if (dirty[0] & /*tooltipTop*/ 64) {
-    				set_style(div2, "top", /*tooltipTop*/ ctx[6]);
-    			}
-
-    			if (dirty[0] & /*tooltipLeft*/ 128) {
-    				set_style(div2, "left", /*tooltipLeft*/ ctx[7]);
-    			}
-
-    			if (dirty[0] & /*tooltipDirection*/ 256) {
-    				set_style(div2, "transform", "translate(-50%, " + (/*tooltipDirection*/ ctx[8] === "north"
-    				? "-100%"
-    				: "15%") + ")");
+    			if (dirty[0] & /*legendDisplay*/ 131072) {
+    				attr_dev(div4, "style", /*legendDisplay*/ ctx[17]);
     			}
     		},
     		i: noop$4,
     		o: noop$4,
     		d: function destroy(detaching) {
     			if (detaching) detach_dev(figure);
-    			destroy_each(each_blocks, detaching);
-    			/*svg_binding*/ ctx[24](null);
-    			/*div2_binding*/ ctx[25](null);
+    			destroy_each(each_blocks_1, detaching);
+    			/*svg_binding*/ ctx[31](null);
+    			/*div2_binding*/ ctx[32](null);
     			figure_resize_listener();
+    			if (detaching) detach_dev(t6);
+    			if (detaching) detach_dev(div4);
+    			destroy_each(each_blocks, detaching);
+    			mounted = false;
+    			dispose();
     		}
     	};
 
@@ -21263,9 +21537,12 @@ var app = (function () {
     	let yAxisScale;
     	let xAxis;
     	let yAxis;
+    	let legendDisplay;
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("LatentSpace", slots, []);
     	let { metFacesData } = $$props;
+    	let { clusterData } = $$props;
+    	let { clusterRanges } = $$props;
     	let viz;
     	let height;
     	let width;
@@ -21277,43 +21554,69 @@ var app = (function () {
     	let tooltipLeft = 0;
     	let tooltipDirection = "north";
     	let tooltipVisible = false;
-    	let selectedImage = "";
     	let selectedData = {};
-    	metFacesData = metFacesData.sort((a, b) => a.image === "" ? 1 : b.image === "" ? -1 : 0);
-    	let dataWithImages = metFacesData.filter(({ image }) => image);
+    	let hoverRep = [false, false, false, false, false, false, false, false, false, false]; //to reveal faces on hover
+    	let hoverCluster = 99; // to reveal cluster faces on hover
+    	let selectedCluster = 99; //for updateAxis to zoom in to the right place
+    	let resetZoom = true; //zoom should not be applied when this is true
+
+    	// let faceScale = 2.8;
+    	let miniSize = 20;
 
     	const unsubscribeScroll = scroll.subscribe(({ index, progress, direction }) => {
-    		$$invalidate(3, scrollIndex = index);
+    		$$invalidate(5, scrollIndex = index);
     		scrollProgress = progress;
-    		$$invalidate(13, scrollDirection = direction);
+    		$$invalidate(20, scrollDirection = direction);
     	});
 
     	onMount(() => {
     		const svg = select(viz);
-    		selectAll(".face-image").style("opacity", 0.8);
 
-    		svg.append("g").attr("class", "face-markers").selectAll("rect").data(metFacesData, d => d.id).join("rect").attr("class", "face-marker").attr("height", blockSize).attr("width", blockSize).style("opacity", 0).style("fill", d => d.dominant_color_hex).style("stroke-width", 0).style("stroke", "black").on("mouseover", (e, d) => {
-    			$$invalidate(10, selectedData = { ...d });
-    			$$invalidate(6, tooltipTop = `${e.clientY - 10}px`);
-    			$$invalidate(7, tooltipLeft = `${e.clientX}px`);
-    			$$invalidate(8, tooltipDirection = e.clientY < 200 ? "south" : "north");
-    			$$invalidate(9, tooltipVisible = true);
+    		// d3.selectAll(".face-image").style("opacity", .8);
+    		svg.append("g").attr("class", "face-markers").selectAll("rect").data(metFacesData, d => d.count).join("rect").attr("class", "face-marker").attr("height", blockSize).attr("width", blockSize).style("fill", d => [].includes(scrollIndex)
+    		? `url(#${d.count}-mini)`
+    		: d.dominant_color_hex).style("stroke-width", 0).style("stroke", "black").on("mouseover", (e, d) => {
+    			$$invalidate(15, selectedData = { ...d });
+    			$$invalidate(11, tooltipTop = `${e.clientY - 10}px`);
+    			$$invalidate(12, tooltipLeft = `${e.clientX}px`);
+    			$$invalidate(13, tooltipDirection = e.clientY < 200 ? "south" : "north");
+    			$$invalidate(14, tooltipVisible = true);
     		}).on("mousemove", (e, d) => {
-    			$$invalidate(6, tooltipTop = `${e.clientY - 10}px`);
-    			$$invalidate(7, tooltipLeft = `${e.clientX}px`);
+    			$$invalidate(11, tooltipTop = `${e.clientY - 10}px`);
+    			$$invalidate(12, tooltipLeft = `${e.clientX}px`);
     		}).on("mouseout", (e, d) => {
-    			$$invalidate(6, tooltipTop = `0px`);
-    			$$invalidate(7, tooltipLeft = `0px`);
-    			$$invalidate(9, tooltipVisible = false);
-    		}).style("display", [0, 1, 2].includes(scrollIndex) ? "block" : "none");
+    			$$invalidate(11, tooltipTop = `0px`);
+    			$$invalidate(12, tooltipLeft = `0px`);
+    			$$invalidate(14, tooltipVisible = false);
+    		});
 
+    		// .style("display", [0].includes(scrollIndex) ? "none" : "block")
     		svg.append("g").attr("class", "y-axis axis");
+
     		svg.append("g").attr("class", "x-axis axis");
     		svg.append("text").attr("class", "x-axis-label axis-label label").style("text-anchor", "end").style("fill", "#333333");
     		svg.append("text").attr("class", "y-axis-label axis-label label").style("text-anchor", "start").style("fill", "#333333");
     	});
 
-    	const writable_props = ["metFacesData"];
+    	function updateAxis() {
+    		select(viz);
+
+    		// svg.selectAll(".face-marker")
+    		//     .style("cursor", "crosshair")
+    		//     .style("display", d => d)
+    		//     // .filter(d => d.cluster == `Cluster ${selectedCluster}`)
+    		//     .attr("rx", 0)
+    		//     .attr("ry", 0)
+    		//     .attr("width", hoverCluster == selectedCluster ? 40 : blockSize)
+    		//     .attr("height", hoverCluster == selectedCluster ? 40 : blockSize)
+    		//     .style("opacity", 1)
+    		//     .style("fill", d => d.cluster == `Cluster ${selectedCluster}` ? `url(#${d.count}-mini-40)` : d.dominant_color_hex)
+    		//     ;
+    		$$invalidate(8, resetZoom = false);
+    	}
+
+    	
+    	const writable_props = ["metFacesData", "clusterData", "clusterRanges"];
 
     	Object.keys($$props).forEach(key => {
     		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn(`<LatentSpace> was created with unknown prop '${key}'`);
@@ -21322,26 +21625,46 @@ var app = (function () {
     	function svg_binding($$value) {
     		binding_callbacks[$$value ? "unshift" : "push"](() => {
     			viz = $$value;
-    			$$invalidate(0, viz);
+    			$$invalidate(2, viz);
     		});
     	}
 
     	function div2_binding($$value) {
     		binding_callbacks[$$value ? "unshift" : "push"](() => {
     			tooltip = $$value;
-    			$$invalidate(5, tooltip);
+    			$$invalidate(10, tooltip);
     		});
     	}
 
     	function figure_elementresize_handler() {
     		width = this.clientWidth;
     		height = this.clientHeight;
-    		$$invalidate(2, width);
-    		$$invalidate(1, height);
+    		$$invalidate(4, width);
+    		$$invalidate(3, height);
     	}
 
+    	const mouseenter_handler = (i, e) => {
+    		$$invalidate(6, hoverCluster = i + 1);
+    		$$invalidate(16, hoverRep[i] = true, hoverRep);
+    	};
+
+    	const mouseout_handler = (i, e) => $$invalidate(16, hoverRep[i] = false, hoverRep);
+
+    	const click_handler = (i, e) => {
+    		$$invalidate(7, selectedCluster = i + 1);
+    		updateAxis();
+    	};
+
+    	const mouseleave_handler = e => {
+    		$$invalidate(8, resetZoom = true);
+    		$$invalidate(6, hoverCluster = 99);
+    		$$invalidate(7, selectedCluster = 99);
+    	};
+
     	$$self.$$set = $$props => {
-    		if ("metFacesData" in $$props) $$invalidate(12, metFacesData = $$props.metFacesData);
+    		if ("metFacesData" in $$props) $$invalidate(0, metFacesData = $$props.metFacesData);
+    		if ("clusterData" in $$props) $$invalidate(1, clusterData = $$props.clusterData);
+    		if ("clusterRanges" in $$props) $$invalidate(19, clusterRanges = $$props.clusterRanges);
     	};
 
     	$$self.$capture_state = () => ({
@@ -21350,6 +21673,8 @@ var app = (function () {
     		coordinates,
     		scroll,
     		metFacesData,
+    		clusterData,
+    		clusterRanges,
     		viz,
     		height,
     		width,
@@ -21361,11 +21686,15 @@ var app = (function () {
     		tooltipLeft,
     		tooltipDirection,
     		tooltipVisible,
-    		selectedImage,
     		selectedData,
+    		hoverRep,
+    		hoverCluster,
+    		selectedCluster,
+    		resetZoom,
     		mobileBreakpoint: mobileBreakpoint$1,
-    		dataWithImages,
+    		miniSize,
     		unsubscribeScroll,
+    		updateAxis,
     		imageSize,
     		blockSize,
     		padding,
@@ -21377,37 +21706,44 @@ var app = (function () {
     		xAxisScale,
     		yAxisScale,
     		xAxis,
-    		yAxis
+    		yAxis,
+    		legendDisplay
     	});
 
     	$$self.$inject_state = $$props => {
-    		if ("metFacesData" in $$props) $$invalidate(12, metFacesData = $$props.metFacesData);
-    		if ("viz" in $$props) $$invalidate(0, viz = $$props.viz);
-    		if ("height" in $$props) $$invalidate(1, height = $$props.height);
-    		if ("width" in $$props) $$invalidate(2, width = $$props.width);
-    		if ("scrollIndex" in $$props) $$invalidate(3, scrollIndex = $$props.scrollIndex);
+    		if ("metFacesData" in $$props) $$invalidate(0, metFacesData = $$props.metFacesData);
+    		if ("clusterData" in $$props) $$invalidate(1, clusterData = $$props.clusterData);
+    		if ("clusterRanges" in $$props) $$invalidate(19, clusterRanges = $$props.clusterRanges);
+    		if ("viz" in $$props) $$invalidate(2, viz = $$props.viz);
+    		if ("height" in $$props) $$invalidate(3, height = $$props.height);
+    		if ("width" in $$props) $$invalidate(4, width = $$props.width);
+    		if ("scrollIndex" in $$props) $$invalidate(5, scrollIndex = $$props.scrollIndex);
     		if ("scrollProgress" in $$props) scrollProgress = $$props.scrollProgress;
-    		if ("scrollDirection" in $$props) $$invalidate(13, scrollDirection = $$props.scrollDirection);
-    		if ("tooltip" in $$props) $$invalidate(5, tooltip = $$props.tooltip);
-    		if ("tooltipTop" in $$props) $$invalidate(6, tooltipTop = $$props.tooltipTop);
-    		if ("tooltipLeft" in $$props) $$invalidate(7, tooltipLeft = $$props.tooltipLeft);
-    		if ("tooltipDirection" in $$props) $$invalidate(8, tooltipDirection = $$props.tooltipDirection);
-    		if ("tooltipVisible" in $$props) $$invalidate(9, tooltipVisible = $$props.tooltipVisible);
-    		if ("selectedImage" in $$props) selectedImage = $$props.selectedImage;
-    		if ("selectedData" in $$props) $$invalidate(10, selectedData = $$props.selectedData);
-    		if ("dataWithImages" in $$props) $$invalidate(11, dataWithImages = $$props.dataWithImages);
-    		if ("imageSize" in $$props) $$invalidate(4, imageSize = $$props.imageSize);
-    		if ("blockSize" in $$props) $$invalidate(14, blockSize = $$props.blockSize);
-    		if ("padding" in $$props) $$invalidate(15, padding = $$props.padding);
-    		if ("shorterAxisLength" in $$props) $$invalidate(16, shorterAxisLength = $$props.shorterAxisLength);
-    		if ("scatterX" in $$props) $$invalidate(17, scatterX = $$props.scatterX);
-    		if ("scatterY" in $$props) $$invalidate(18, scatterY = $$props.scatterY);
-    		if ("rows" in $$props) $$invalidate(19, rows = $$props.rows);
+    		if ("scrollDirection" in $$props) $$invalidate(20, scrollDirection = $$props.scrollDirection);
+    		if ("tooltip" in $$props) $$invalidate(10, tooltip = $$props.tooltip);
+    		if ("tooltipTop" in $$props) $$invalidate(11, tooltipTop = $$props.tooltipTop);
+    		if ("tooltipLeft" in $$props) $$invalidate(12, tooltipLeft = $$props.tooltipLeft);
+    		if ("tooltipDirection" in $$props) $$invalidate(13, tooltipDirection = $$props.tooltipDirection);
+    		if ("tooltipVisible" in $$props) $$invalidate(14, tooltipVisible = $$props.tooltipVisible);
+    		if ("selectedData" in $$props) $$invalidate(15, selectedData = $$props.selectedData);
+    		if ("hoverRep" in $$props) $$invalidate(16, hoverRep = $$props.hoverRep);
+    		if ("hoverCluster" in $$props) $$invalidate(6, hoverCluster = $$props.hoverCluster);
+    		if ("selectedCluster" in $$props) $$invalidate(7, selectedCluster = $$props.selectedCluster);
+    		if ("resetZoom" in $$props) $$invalidate(8, resetZoom = $$props.resetZoom);
+    		if ("miniSize" in $$props) $$invalidate(40, miniSize = $$props.miniSize);
+    		if ("imageSize" in $$props) $$invalidate(9, imageSize = $$props.imageSize);
+    		if ("blockSize" in $$props) $$invalidate(21, blockSize = $$props.blockSize);
+    		if ("padding" in $$props) $$invalidate(22, padding = $$props.padding);
+    		if ("shorterAxisLength" in $$props) $$invalidate(23, shorterAxisLength = $$props.shorterAxisLength);
+    		if ("scatterX" in $$props) $$invalidate(24, scatterX = $$props.scatterX);
+    		if ("scatterY" in $$props) $$invalidate(25, scatterY = $$props.scatterY);
+    		if ("rows" in $$props) $$invalidate(26, rows = $$props.rows);
     		if ("cols" in $$props) cols = $$props.cols;
-    		if ("xAxisScale" in $$props) $$invalidate(20, xAxisScale = $$props.xAxisScale);
-    		if ("yAxisScale" in $$props) $$invalidate(21, yAxisScale = $$props.yAxisScale);
-    		if ("xAxis" in $$props) $$invalidate(22, xAxis = $$props.xAxis);
-    		if ("yAxis" in $$props) $$invalidate(23, yAxis = $$props.yAxis);
+    		if ("xAxisScale" in $$props) $$invalidate(27, xAxisScale = $$props.xAxisScale);
+    		if ("yAxisScale" in $$props) $$invalidate(28, yAxisScale = $$props.yAxisScale);
+    		if ("xAxis" in $$props) $$invalidate(29, xAxis = $$props.xAxis);
+    		if ("yAxis" in $$props) $$invalidate(30, yAxis = $$props.yAxis);
+    		if ("legendDisplay" in $$props) $$invalidate(17, legendDisplay = $$props.legendDisplay);
     	};
 
     	if ($$props && "$$inject" in $$props) {
@@ -21415,88 +21751,104 @@ var app = (function () {
     	}
 
     	$$self.$$.update = () => {
-    		if ($$self.$$.dirty[0] & /*width*/ 4) {
-    			$$invalidate(4, imageSize = width < mobileBreakpoint$1 ? 75 : 125);
+    		if ($$self.$$.dirty[0] & /*width*/ 16) {
+    			$$invalidate(9, imageSize = width < mobileBreakpoint$1 ? 75 : 125);
     		}
 
-    		if ($$self.$$.dirty[0] & /*width*/ 4) {
-    			$$invalidate(14, blockSize = width < mobileBreakpoint$1 ? 4 : 8);
+    		if ($$self.$$.dirty[0] & /*width*/ 16) {
+    			$$invalidate(21, blockSize = width < mobileBreakpoint$1 ? 4 : 8);
     		}
 
-    		if ($$self.$$.dirty[0] & /*width, height*/ 6) {
-    			$$invalidate(15, padding = {
+    		if ($$self.$$.dirty[0] & /*width, height*/ 24) {
+    			$$invalidate(22, padding = {
     				horizontal: width < mobileBreakpoint$1 ? 45 : width / 8,
     				vertical: width < mobileBreakpoint$1 ? height / 5 : height / 10
     			});
     		}
 
-    		if ($$self.$$.dirty[0] & /*height, padding, width*/ 32774) {
-    			$$invalidate(16, shorterAxisLength = Math.min(height - padding.vertical * 2, width - padding.horizontal * 2));
+    		if ($$self.$$.dirty[0] & /*height, padding, width*/ 4194328) {
+    			$$invalidate(23, shorterAxisLength = Math.min(height - padding.vertical * 2, width - padding.horizontal * 2));
     		}
 
-    		if ($$self.$$.dirty[0] & /*padding, shorterAxisLength*/ 98304) {
-    			$$invalidate(17, scatterX = linear().domain([0, 255]).range([padding.horizontal, shorterAxisLength + padding.horizontal]));
+    		if ($$self.$$.dirty[0] & /*scrollIndex, padding, shorterAxisLength, selectedCluster, resetZoom, clusterRanges*/ 13107616) {
+    			$$invalidate(24, scatterX = [1, 2].includes(scrollIndex)
+    			? linear().domain([0, 255]).range([padding.horizontal, shorterAxisLength + padding.horizontal])
+    			: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].includes(selectedCluster) && !resetZoom
+    				? linear().domain([
+    						clusterRanges[selectedCluster - 1].cluster_min_x,
+    						clusterRanges[selectedCluster - 1].cluster_max_x
+    					]).range([padding.horizontal, shorterAxisLength + padding.horizontal])
+    				: linear().domain([-1, 1]).range([padding.horizontal, shorterAxisLength + padding.horizontal]));
     		}
 
-    		if ($$self.$$.dirty[0] & /*height, padding, shorterAxisLength*/ 98306) {
-    			$$invalidate(18, scatterY = linear().domain([0, 255]).range([height - padding.vertical, height - shorterAxisLength - padding.vertical]));
+    		if ($$self.$$.dirty[0] & /*scrollIndex, height, padding, shorterAxisLength, selectedCluster, resetZoom, clusterRanges*/ 13107624) {
+    			$$invalidate(25, scatterY = [1, 2].includes(scrollIndex)
+    			? linear().domain([0, 255]).range([height - padding.vertical, height - shorterAxisLength - padding.vertical])
+    			: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].includes(selectedCluster) && !resetZoom
+    				? linear().domain([
+    						clusterRanges[selectedCluster - 1].cluster_min_y,
+    						clusterRanges[selectedCluster - 1].cluster_max_y
+    					]).range([
+    						height - padding.vertical,
+    						height - shorterAxisLength - padding.vertical
+    					])
+    				: linear().domain([-1, 1]).range([
+    						height - padding.vertical,
+    						height - shorterAxisLength - padding.vertical
+    					]));
     		}
 
-    		if ($$self.$$.dirty[0] & /*height, imageSize*/ 18) {
-    			$$invalidate(19, rows = Math.ceil(height / imageSize) + 1);
+    		if ($$self.$$.dirty[0] & /*height, imageSize*/ 520) {
+    			$$invalidate(26, rows = Math.ceil(height / imageSize) + 1);
     		}
 
-    		if ($$self.$$.dirty[0] & /*width, imageSize*/ 20) {
+    		if ($$self.$$.dirty[0] & /*width, imageSize*/ 528) {
     			cols = Math.ceil(width / imageSize);
     		}
 
-    		if ($$self.$$.dirty[0] & /*padding, scrollIndex*/ 32776) {
-    			select(".y-axis").attr("transform", `translate(${padding.horizontal}, 0)`).style("display", scrollIndex === 0 ? "none" : "block").style("font", "15px Apercu");
+    		if ($$self.$$.dirty[0] & /*padding, scrollIndex*/ 4194336) {
+    			select(".y-axis").attr("transform", `translate(${padding.horizontal}, 0)`).style("display", [1, 2].includes(scrollIndex) ? "block" : "none").style("font", "15px Apercu");
     		}
 
-    		if ($$self.$$.dirty[0] & /*height, padding, scrollIndex*/ 32778) {
-    			select(".x-axis").attr("transform", `translate(0, ${height - padding.vertical + 10})`).style("display", scrollIndex === 0 ? "none" : "block").style("font", "15px Apercu");
+    		if ($$self.$$.dirty[0] & /*height, padding, scrollIndex*/ 4194344) {
+    			select(".x-axis").attr("transform", `translate(0, ${height - padding.vertical + 10})`).style("display", [1, 2].includes(scrollIndex) ? "block" : "none").style("font", "15px Apercu");
     		}
 
-    		if ($$self.$$.dirty[0] & /*scrollIndex, scrollDirection, scatterX, height, padding*/ 172042) {
+    		if ($$self.$$.dirty[0] & /*scrollIndex, scrollDirection, scatterX, height, padding*/ 22020136) {
     			select(".x-axis-label").transition().duration(scrollIndex === 5 && scrollDirection === "down" || scrollIndex === 4 && scrollDirection === "up"
     			? 1000
-    			: 0).attr("text-anchor", "end").attr("x", (scatterX.range()[0] + scatterX.range()[1]) / 2).attr("y", height - padding.vertical + 50).style("display", scrollIndex === 0 ? "none" : "block").style("font", "19px Copyright Klim Type Foundry").style("fill", scrollIndex === 1 || scrollIndex === 2
+    			: 0).attr("text-anchor", "end").attr("x", (scatterX.range()[0] + scatterX.range()[1]) / 2).attr("y", height - padding.vertical + 50).style("display", [1, 2].includes(scrollIndex) ? "block" : "none").style("font", "19px Copyright Klim Type Foundry").style("fill", scrollIndex === 1 || scrollIndex === 2
     			? "var(--red)"
     			: "#333").text([1, 2].includes(scrollIndex)
     			? "Red level"
     			: "Latent space vector 1 (points to be updated)");
     		}
 
-    		if ($$self.$$.dirty[0] & /*scrollIndex, scrollDirection, padding, scatterY, width*/ 303116) {
+    		if ($$self.$$.dirty[0] & /*scrollIndex, scrollDirection, padding, scatterY, width*/ 38797360) {
     			select(".y-axis-label").transition().duration(scrollIndex === 5 && scrollDirection === "down" || scrollIndex === 4 && scrollDirection === "up"
     			? 1000
-    			: 0).attr("text-anchor", "end").attr("x", padding.horizontal + 10).attr("y", scatterY.range()[1] + (width < mobileBreakpoint$1 ? 10 : 10)).style("display", scrollIndex === 0 ? "none" : "block").style("font", "19px Copyright Klim Type Foundry").style("fill", scrollIndex === 1
+    			: 0).attr("text-anchor", "end").attr("x", padding.horizontal + 10).attr("y", scatterY.range()[1] + (width < mobileBreakpoint$1 ? 10 : 10)).style("display", [1, 2].includes(scrollIndex) ? "block" : "none").style("font", "19px Copyright Klim Type Foundry").style("fill", scrollIndex === 1
     			? "var(--green)"
-    			: scrollIndex === 2 ? "steelblue" : "#333").text(scrollIndex === 1
-    			? "Green level"
-    			: scrollIndex === 2
-    				? "Blue level"
-    				: "Latent space vector 2 (points to be updated)");
+    			: scrollIndex === 2 ? "steelblue" : "#333").text(scrollIndex === 1 ? "Green level" : "Blue level"); //scrollIndex === 2 ? "Blue level" : "Latent space vector 2 (points to be updated)");
     		}
 
-    		if ($$self.$$.dirty[0] & /*scatterX*/ 131072) {
-    			$$invalidate(20, xAxisScale = scatterX);
+    		if ($$self.$$.dirty[0] & /*scatterX*/ 16777216) {
+    			$$invalidate(27, xAxisScale = scatterX);
     		}
 
-    		if ($$self.$$.dirty[0] & /*scatterY*/ 262144) {
-    			$$invalidate(21, yAxisScale = scatterY);
+    		if ($$self.$$.dirty[0] & /*scatterY*/ 33554432) {
+    			$$invalidate(28, yAxisScale = scatterY);
     		}
 
-    		if ($$self.$$.dirty[0] & /*xAxisScale*/ 1048576) {
-    			$$invalidate(22, xAxis = axisBottom().scale(xAxisScale).tickFormat(format("d")).ticks(4));
+    		if ($$self.$$.dirty[0] & /*xAxisScale*/ 134217728) {
+    			$$invalidate(29, xAxis = axisBottom().scale(xAxisScale).tickFormat(format("d")).ticks(4));
     		}
 
-    		if ($$self.$$.dirty[0] & /*yAxisScale*/ 2097152) {
-    			$$invalidate(23, yAxis = axisLeft().scale(yAxisScale).tickFormat(format(",")).ticks(4));
+    		if ($$self.$$.dirty[0] & /*yAxisScale*/ 268435456) {
+    			$$invalidate(30, yAxis = axisLeft().scale(yAxisScale).tickFormat(format(",")).ticks(4));
     		}
 
-    		if ($$self.$$.dirty[0] & /*scrollIndex, viz, imageSize, scrollDirection, rows*/ 532505) {
+    		if ($$self.$$.dirty[0] & /*scrollIndex, viz, imageSize, scrollDirection, rows*/ 68157988) {
     			if (scrollIndex === 0) {
     				const svg = select(viz);
     				svg.selectAll(".face-image").transition().duration(0).attr("width", imageSize).attr("height", imageSize);
@@ -21505,11 +21857,11 @@ var app = (function () {
     					return imageSize * Math.floor(i / rows);
     				}).attr("y", (d, i) => {
     					return imageSize * (i % rows);
-    				}).attr("rx", 0).attr("ry", 0).style("opacity", 1).transition().duration(0).style("fill", d => `url(#${d.id})`);
+    				}).attr("rx", 0).attr("ry", 0).style("opacity", 0.8).transition().duration(0).style("fill", d => `url(#${d.count})`);
     			}
     		}
 
-    		if ($$self.$$.dirty[0] & /*scrollIndex, viz, scatterX, scatterY, blockSize, scrollDirection, xAxis, yAxis*/ 13000713) {
+    		if ($$self.$$.dirty[0] & /*scrollIndex, viz, scatterX, scatterY, blockSize, scrollDirection, xAxis, yAxis*/ 1664090148) {
     			if (scrollIndex === 1 || scrollIndex === 2) {
     				const svg = select(viz);
     				const blockTransitionTime = 1000;
@@ -21524,13 +21876,68 @@ var app = (function () {
     				: blockTransitionTime).call(yAxis);
     			}
     		}
+
+    		if ($$self.$$.dirty[0] & /*scrollIndex, viz, scatterX, scatterY, blockSize*/ 52428836) {
+    			if (scrollIndex === 3) {
+    				const svg = select(viz);
+    				const blockTransitionTime = 1000;
+    				svg.selectAll(".face-marker").style("cursor", "crosshair").style("display", d => d).attr("rx", 30).attr("ry", 30).transition().duration(blockTransitionTime).style("fill", d => d.dominant_color_hex).style("opacity", 0.8).attr("x", d => scatterX(d.umap_jitter_X)).attr("y", d => scatterY(d.umap_jitter_Y)).attr("width", blockSize).attr("height", blockSize);
+    			}
+    		}
+
+    		if ($$self.$$.dirty[0] & /*scrollIndex*/ 32) {
+    			if (scrollIndex != 4) $$invalidate(6, hoverCluster = 99);
+    		}
+
+    		if ($$self.$$.dirty[0] & /*scrollIndex, viz, resetZoom, hoverCluster, selectedCluster, scatterX, scatterY, imageSize, rows*/ 117441508) {
+    			if (scrollIndex === 4) {
+    				const svg = select(viz);
+    				const blockTransitionTime = 1500;
+
+    				svg.selectAll(".face-marker").// .style("fill", d => `url(#${d.count}-tiny)`)
+    				style("cursor", "crosshair").style("display", d => d).attr("rx", 0).attr("ry", 0).attr("width", d => resetZoom ? miniSize : 40).attr("height", d => resetZoom ? miniSize : 40).style("fill", d => hoverCluster == 99 && resetZoom || d.cluster == `Cluster ${hoverCluster}` && resetZoom
+    				? `url(#${d.count}-mini)`
+    				: d.cluster == `Cluster ${selectedCluster}`
+    					? `url(#${d.count}-mini-40)`
+    					: d.dominant_color_hex).transition().duration(blockTransitionTime).style("opacity", 1).attr("x", d => scatterX(d.gridX)).attr("y", d => scatterY(d.gridY)).attr("width", d => resetZoom ? miniSize : 40).attr("height", d => resetZoom ? miniSize : 40).transition().duration(blockTransitionTime).style("opacity", d => selectedCluster == 99 || d.cluster == `Cluster ${selectedCluster}` || hoverCluster != selectedCluster
+    				? 1
+    				: 0).filter(d => d.cluster == `Cluster ${selectedCluster}`).attr("x", (d, i) => {
+    					if (hoverCluster != selectedCluster) {
+    						return scatterX(d.gridX);
+    					}
+
+    					return imageSize * Math.floor(i / rows);
+    				}).attr("y", (d, i) => {
+    					if (hoverCluster != selectedCluster) {
+    						return scatterY(d.gridY);
+    					}
+
+    					return imageSize * (i % rows);
+    				}).style("fill", d => hoverCluster == selectedCluster
+    				? `url(#${d.count})`
+    				: `url(#${d.count}-mini-40)`).attr("width", d => d.cluster == `Cluster ${selectedCluster}`
+    				? imageSize
+    				: 0).attr("height", d => d.cluster == `Cluster ${selectedCluster}`
+    				? imageSize
+    				: 0);
+    			}
+    		}
+
+    		if ($$self.$$.dirty[0] & /*scrollIndex*/ 32) {
+    			$$invalidate(17, legendDisplay = scrollIndex === 4 ? "display: grid" : "display: none;");
+    		}
     	};
 
     	return [
+    		metFacesData,
+    		clusterData,
     		viz,
     		height,
     		width,
     		scrollIndex,
+    		hoverCluster,
+    		selectedCluster,
+    		resetZoom,
     		imageSize,
     		tooltip,
     		tooltipTop,
@@ -21538,8 +21945,10 @@ var app = (function () {
     		tooltipDirection,
     		tooltipVisible,
     		selectedData,
-    		dataWithImages,
-    		metFacesData,
+    		hoverRep,
+    		legendDisplay,
+    		updateAxis,
+    		clusterRanges,
     		scrollDirection,
     		blockSize,
     		padding,
@@ -21553,14 +21962,31 @@ var app = (function () {
     		yAxis,
     		svg_binding,
     		div2_binding,
-    		figure_elementresize_handler
+    		figure_elementresize_handler,
+    		mouseenter_handler,
+    		mouseout_handler,
+    		click_handler,
+    		mouseleave_handler
     	];
     }
 
     class LatentSpace extends SvelteComponentDev {
     	constructor(options) {
     		super(options);
-    		init$1(this, options, instance$6, create_fragment$6, safe_not_equal, { metFacesData: 12 }, [-1, -1]);
+
+    		init$1(
+    			this,
+    			options,
+    			instance$6,
+    			create_fragment$6,
+    			safe_not_equal,
+    			{
+    				metFacesData: 0,
+    				clusterData: 1,
+    				clusterRanges: 19
+    			},
+    			[-1, -1]
+    		);
 
     		dispatch_dev("SvelteRegisterComponent", {
     			component: this,
@@ -21572,8 +21998,16 @@ var app = (function () {
     		const { ctx } = this.$$;
     		const props = options.props || {};
 
-    		if (/*metFacesData*/ ctx[12] === undefined && !("metFacesData" in props)) {
+    		if (/*metFacesData*/ ctx[0] === undefined && !("metFacesData" in props)) {
     			console.warn("<LatentSpace> was created without expected prop 'metFacesData'");
+    		}
+
+    		if (/*clusterData*/ ctx[1] === undefined && !("clusterData" in props)) {
+    			console.warn("<LatentSpace> was created without expected prop 'clusterData'");
+    		}
+
+    		if (/*clusterRanges*/ ctx[19] === undefined && !("clusterRanges" in props)) {
+    			console.warn("<LatentSpace> was created without expected prop 'clusterRanges'");
     		}
     	}
 
@@ -21582,6 +22016,22 @@ var app = (function () {
     	}
 
     	set metFacesData(value) {
+    		throw new Error("<LatentSpace>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get clusterData() {
+    		throw new Error("<LatentSpace>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set clusterData(value) {
+    		throw new Error("<LatentSpace>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	get clusterRanges() {
+    		throw new Error("<LatentSpace>: Props cannot be read directly from the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
+    	}
+
+    	set clusterRanges(value) {
     		throw new Error("<LatentSpace>: Props cannot be set directly on the component instance unless compiling with 'accessors: true' or '<svelte:options accessors/>'");
     	}
     }
@@ -22079,7 +22529,9 @@ var app = (function () {
     	let p0;
     	let t4;
     	let p1;
-    	let t5;
+    	let t6;
+    	let p2;
+    	let t7;
     	let a;
 
     	const block = {
@@ -22095,7 +22547,10 @@ var app = (function () {
     			p0.textContent = "This footer is the average of all dominant colors in the dataset!";
     			t4 = space();
     			p1 = element("p");
-    			t5 = text$1("GitHub ");
+    			p1.textContent = "The images on the top of this page reshuffle when you refresh the page.";
+    			t6 = space();
+    			p2 = element("p");
+    			t7 = text$1("GitHub ");
     			a = element("a");
     			a.textContent = "link";
     			attr_dev(hr, "class", "svelte-b3xh24");
@@ -22103,12 +22558,14 @@ var app = (function () {
     			add_location(h1, file$2, 50, 8, 920);
     			attr_dev(p0, "class", "svelte-b3xh24");
     			add_location(p0, file$2, 51, 8, 951);
+    			attr_dev(p1, "class", "svelte-b3xh24");
+    			add_location(p1, file$2, 54, 8, 1054);
     			attr_dev(a, "target", "_blank");
     			attr_dev(a, "href", "https://github.com/6859-sp21/final-project-doj");
     			attr_dev(a, "class", "svelte-b3xh24");
-    			add_location(a, file$2, 55, 19, 1077);
-    			attr_dev(p1, "class", "svelte-b3xh24");
-    			add_location(p1, file$2, 54, 8, 1054);
+    			add_location(a, file$2, 58, 19, 1186);
+    			attr_dev(p2, "class", "svelte-b3xh24");
+    			add_location(p2, file$2, 57, 8, 1163);
     			attr_dev(div0, "class", "footer-section svelte-b3xh24");
     			add_location(div0, file$2, 49, 4, 883);
     			attr_dev(div1, "class", "" + (null_to_empty("footer") + " svelte-b3xh24"));
@@ -22127,8 +22584,10 @@ var app = (function () {
     			append_dev(div0, p0);
     			append_dev(div0, t4);
     			append_dev(div0, p1);
-    			append_dev(p1, t5);
-    			append_dev(p1, a);
+    			append_dev(div0, t6);
+    			append_dev(div0, p2);
+    			append_dev(p2, t7);
+    			append_dev(p2, a);
     		},
     		p: noop$4,
     		i: noop$4,
@@ -22284,17 +22743,26 @@ var app = (function () {
     	{
     		title: "Same data, new perspective 👀",
     		text: [
-    			"I can also plot the data by Red and Blue values to obtain a different view. Both perspectives reveal a similar trend, although this graph looks more dispersed. This means there is more variability of dominant colors on the blue-red spectrum."
+    			"I can also plot the data by Red and Blue values to obtain a different view. Both perspectives reveal a similar trend, although this graph looks more dispersed. This means there is more variability of dominant colors on the blue-red spectrum.",
+    			"🗿 The 172 portraits dominant in the grayscale stay put from the previous view!"
     		],
     		small: "🐁 Mouseover each point to explore the data."
     	},
     	{
     		title: "Moving up from pixel values 🧠",
     		text: [
-    			"By repeatedly finding patterns in the data in a deep neural net, I can identify clusters that are similar in ways beyond pixel color. Since I am a machine, I don't know how these things are alike in the real world...",
-    			"Can you think of names for each group?"
+    			"I can repeatedly find patterns in an image's data using a deep neural net, and identify clusters of images that are similar in ways beyond a single color measure. As much as this might look like a Rorschach test, the absolute position of each cluster is arbitrary.",
+    			"🤓 Let me arrange it in a grid so it's easier to see..."
     		],
-    		small: "🕹 Use the scrollwheel to zoom, pan, and interact with the visual."
+    		small: "🐁 Mouseover each point to explore the data."
+    	},
+    	{
+    		title: "Clustering by likeness 💪",
+    		text: [
+    			"...Voilà! In this grid are the 10 clusters that I found in the data. Above you will find one representative for each cluster. To me, members of each cluster resemble their leader. Do you think so too?",
+    			"💭 Since I am a machine, I don't know how these groups are alike in the real world. Can you think of names for them?"
+    		],
+    		small: "🕹 Hover over and click on each cluster representative to explore the visual."
     	},
     	{
     		title: "From reality to latent space 🚀",
@@ -22365,7 +22833,7 @@ var app = (function () {
     	return block;
     }
 
-    // (65:4) {:then data}
+    // (74:4) {:then data}
     function create_then_block_1(ctx) {
     	let splashscreen;
     	let current;
@@ -22397,21 +22865,21 @@ var app = (function () {
     		block,
     		id: create_then_block_1.name,
     		type: "then",
-    		source: "(65:4) {:then data}",
+    		source: "(74:4) {:then data}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (63:21)    <div />     {:then data}
+    // (72:21)    <div />     {:then data}
     function create_pending_block_1(ctx) {
     	let div;
 
     	const block = {
     		c: function create() {
     			div = element("div");
-    			add_location(div, file, 63, 2, 1691);
+    			add_location(div, file, 72, 2, 1957);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div, anchor);
@@ -22427,7 +22895,7 @@ var app = (function () {
     		block,
     		id: create_pending_block_1.name,
     		type: "pending",
-    		source: "(63:21)    <div />     {:then data}",
+    		source: "(72:21)    <div />     {:then data}",
     		ctx
     	});
 
@@ -22456,13 +22924,17 @@ var app = (function () {
     	return block;
     }
 
-    // (72:3) {:then data}
+    // (81:3) {:then data}
     function create_then_block(ctx) {
     	let latentspace;
     	let current;
 
     	latentspace = new LatentSpace({
-    			props: { metFacesData: /*data*/ ctx[14][0] },
+    			props: {
+    				metFacesData: /*data*/ ctx[14][0],
+    				clusterData: /*data*/ ctx[14][1],
+    				clusterRanges: /*data*/ ctx[14][2]
+    			},
     			$$inline: true
     		});
 
@@ -22493,14 +22965,14 @@ var app = (function () {
     		block,
     		id: create_then_block.name,
     		type: "then",
-    		source: "(72:3) {:then data}",
+    		source: "(81:3) {:then data}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (70:20)      <Loader />    {:then data}
+    // (79:20)      <Loader />    {:then data}
     function create_pending_block(ctx) {
     	let loader;
     	let current;
@@ -22533,14 +23005,14 @@ var app = (function () {
     		block,
     		id: create_pending_block.name,
     		type: "pending",
-    		source: "(70:20)      <Loader />    {:then data}",
+    		source: "(79:20)      <Loader />    {:then data}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (82:24) {#each text as {t}
+    // (91:24) {#each text as {t}
     function create_each_block_1(ctx) {
     	let p;
     	let t_value = /*text*/ ctx[8][/*i*/ ctx[11]] + "";
@@ -22551,7 +23023,7 @@ var app = (function () {
     			p = element("p");
     			t = text$1(t_value);
     			attr_dev(p, "class", "card-text svelte-r1hjqv");
-    			add_location(p, file, 82, 24, 2184);
+    			add_location(p, file, 91, 24, 2495);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, p, anchor);
@@ -22567,14 +23039,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(82:24) {#each text as {t}",
+    		source: "(91:24) {#each text as {t}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (78:3) {#each subheaders as { title, text, small}
+    // (87:3) {#each subheaders as { title, text, small}
     function create_each_block(ctx) {
     	let div1;
     	let div0;
@@ -22612,15 +23084,15 @@ var app = (function () {
     			t3 = text$1(t3_value);
     			t4 = space();
     			attr_dev(p0, "class", "svelte-r1hjqv");
-    			add_location(p0, file, 80, 6, 2098);
+    			add_location(p0, file, 89, 6, 2409);
     			attr_dev(p1, "class", "card-text-small svelte-r1hjqv");
-    			add_location(p1, file, 84, 24, 2275);
+    			add_location(p1, file, 93, 24, 2586);
     			attr_dev(div0, "class", "card svelte-r1hjqv");
-    			add_location(div0, file, 79, 5, 2073);
+    			add_location(div0, file, 88, 5, 2384);
     			attr_dev(div1, "class", "step svelte-r1hjqv");
     			attr_dev(div1, "key", /*i*/ ctx[11]);
     			toggle_class(div1, "phantom", /*i*/ ctx[11] === 0 || /*i*/ ctx[11] === subheaders.length - 1);
-    			add_location(div1, file, 78, 4, 1984);
+    			add_location(div1, file, 87, 4, 2295);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, div1, anchor);
@@ -22673,7 +23145,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(78:3) {#each subheaders as { title, text, small}",
+    		source: "(87:3) {#each subheaders as { title, text, small}",
     		ctx
     	});
 
@@ -22755,14 +23227,14 @@ var app = (function () {
     			section1 = element("section");
     			create_component(footer.$$.fragment);
     			attr_dev(figure, "class", "svelte-r1hjqv");
-    			add_location(figure, file, 68, 2, 1777);
+    			add_location(figure, file, 77, 2, 2043);
     			attr_dev(article, "class", "svelte-r1hjqv");
-    			add_location(article, file, 76, 2, 1920);
+    			add_location(article, file, 85, 2, 2231);
     			attr_dev(section0, "class", "wrapper");
-    			add_location(section0, file, 67, 1, 1749);
+    			add_location(section0, file, 76, 1, 2015);
     			attr_dev(section1, "class", "footer-section svelte-r1hjqv");
-    			add_location(section1, file, 90, 1, 2380);
-    			add_location(main, file, 59, 0, 1647);
+    			add_location(section1, file, 99, 1, 2691);
+    			add_location(main, file, 68, 0, 1913);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -22881,13 +23353,25 @@ var app = (function () {
     	return block;
     }
 
+    function shuffleArray(array) {
+    	for (let i = array.length - 1; i > 0; i--) {
+    		const j = Math.floor(Math.random() * (i + 1));
+    		[array[i], array[j]] = [array[j], array[i]];
+    	}
+    }
+
     function instance($$self, $$props, $$invalidate) {
     	let { $$slots: slots = {}, $$scope } = $$props;
     	validate_slots("App", slots, []);
-    	const dataFilePromises = [csv("data/merged_metFaces.csv")];
+
+    	const dataFilePromises = [
+    		csv("data/merged_metFaces.csv"),
+    		csv("data/clusters.csv"),
+    		csv("data/cluster_ranges.csv")
+    	];
 
     	let dataLoad = Promise.all(dataFilePromises).then(data => {
-    		data[0] = data[0].sort((a, b) => a.arb_sort - b.arb_sort);
+    		shuffleArray(data[0]);
     		return data;
     	});
 
@@ -22935,6 +23419,7 @@ var app = (function () {
     		subheaders,
     		dataFilePromises,
     		dataLoad,
+    		shuffleArray,
     		scrollIndex,
     		scrollProgress,
     		scrollDirection,
