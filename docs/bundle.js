@@ -24380,7 +24380,7 @@ var app = (function () {
     		csv("data/merged_metFaces.csv"),
     		csv("data/clusters.csv"),
     		csv("data/cluster_ranges.csv"),
-    		csv("data/generatedFaces.csv")
+    		csv("data/generated_Faces.csv")
     	];
 
     	let dataLoad = Promise.all(dataFilePromises).then(data => {
