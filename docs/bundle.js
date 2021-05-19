@@ -21682,7 +21682,7 @@ var app = (function () {
     			t8 = text$1(t8_value);
     			attr_dev(track, "kind", "captions");
     			add_location(track, file$5, 737, 12, 25161);
-    			if (video.src !== (video_src_value = "/images/metFaceReal.mp4")) attr_dev(video, "src", video_src_value);
+    			if (video.src !== (video_src_value = "images/metFaceReal.mp4")) attr_dev(video, "src", video_src_value);
     			attr_dev(video, "class", "svelte-1smuxp7");
     			if (/*duration*/ ctx[25] === void 0) add_render_callback(() => /*video_durationchange_handler*/ ctx[56].call(video));
     			add_location(video, file$5, 730, 8, 24926);
