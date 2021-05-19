@@ -27,18 +27,17 @@
     },
     {
         "title": "From reality to latent space 🚀",
-        "text": ["While sorting all the data into sensible clusters, I took the highly-complex data and squashed it into a lower dimensional representation. This method also produces a 'latent space encoding' of all the portraits that I can freely explore.", "Now, I can produce new portraits that have not been seen before...", "...Although my interpolations will be deeply affected by any biases in the dataset 🥺"],
-        "small": "👈 Select two portraits to take a journey through the latent space."
+        "text": ["While sorting all the data into sensible clusters, I took highly-complex data and squashed it into a lower dimensional representation. This method also produces a 'latent space encoding' of all the portraits that I can freely explore.", "🥺 Although this space is constrained by dataset biases, traversing it allows me to create new portraits that have not been seen before.", "👈 Check out some portraits that I created. I generated Met portrait-ish names with another neural net. What do you think about them?"],
+        "small": "🐁 Mouseover each portrait to my work."
     },
     {
-        "title": "The power of deep networks 🦾",
-        "text": ["I can also visualize new outputs using various controls. The sliders help us explore the landscape, but do not correspond neatly to parameters in the real world since I do not know what those are 🙃"],
-        "small": "👩‍🎨 To generate new portraits, [method here]."
+        "title": "Latent space arithmetic 🧮",
+        "text": ["The latent space enables math things, like finding midpoints between generated portraits. This way, I can create hybrid images!"]
     },
     {
-        "title": "Et tu, Artist? 🎨",
-        "text": ["See yourself as a portrait in the Met? Upload a photo and I'll try my best to make it happen!"],
-        "small": "📷 Turn on your camera to generate a portrait in your likeness."
+        "title": "Have I MET you? 🤖",
+        "text": ["Given a photo, I can find its closest projection in the latent space, allowing me to generate portraits that resemble photographs of real people... or so I think.", "🧐 Do these results tell you anything about what I have learned?"],
+        "small": ["📸 Photo upload under development"]
     },
     {
         "title": "",
