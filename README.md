@@ -4,7 +4,7 @@ by Olivia Seow, Dave Ludgin, and John Liu
 <strong>Abstract</strong> <br>
 A primary barrier to using artificial intelligence is a proper understanding of how the system works, which enables trusts. To confront this, explainable visualizations provide a scaffolding for providing transparency to users. In order to provide this equitably, explainable visualizations should balance completeness and interpretability.
 
-<a href="https://user-images.githubusercontent.com/70551731/118919020-beac4980-b901-11eb-9549-daa127e696c9.png">Final Paper</a>
+<a href="https://github.com/6859-sp21/final-project-doj/blob/main/final/FinalPaper%20DOJ.pdf">Final Paper</a>
 <br>
 <a href="https://www.dropbox.com/s/k79yqd03fn5qwob/Team%20DOJ.mp4?dl=0">Video</a>
 
